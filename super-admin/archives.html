@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives - OPSMS</title>
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Printing Services Logo" style="height:40px;">
+                </div>
+            </div>
+            <ul class="nav-links" role="menu">
+                <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li role="none"><a href="user-management.html" role="menuitem"><i class="fas fa-users"></i> User Management</a></li>
+                <li role="none"><a href="system-config.html" role="menuitem"><i class="fas fa-cog"></i> System Config</a></li>
+                <li role="none"><a href="audit-logs.html" role="menuitem"><i class="fas fa-history"></i> Audit Logs</a></li>
+                <li role="none"><a href="archives.html" class="active" role="menuitem" aria-current="page"><i class="fas fa-archive"></i> Archives</a></li>
+                <li role="none"><a href="backup-restore.html" role="menuitem"><i class="fas fa-database"></i> Backup & Restore</a></li>
+            </ul>
+            <div class="logout">
+                <a href="../login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <header>
+                <div class="header-content">
+                    <h1>Archives</h1>
+                    <div class="user-info">
+                        <span class="admin-name">System Administrator</span>
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>System Archives</h2>
+                    <div class="header-actions">
+                        <div class="date-range">
+                            <input type="date" id="startDate">
+                            <span>to</span>
+                            <input type="date" id="endDate">
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search archives...">
+                        </div>
+                        <button class="export-btn">
+                            <i class="fas fa-download"></i>
+                            Export Archives
+                        </button>
+                    </div>
+                </div>
+
+                <div class="archive-filters">
+                    <select class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="orders">Orders</option>
+                        <option value="users">Users</option>
+                        <option value="products">Products</option>
+                        <option value="logs">System Logs</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="archived">Archived</option>
+                        <option value="deleted">Deleted</option>
+                        <option value="restored">Restored</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Archive ID</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Date Archived</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ARC001</td>
+                                <td>Orders</td>
+                                <td>Q1 2024 Orders Archive</td>
+                                <td>2024-03-15</td>
+                                <td>2.5 MB</td>
+                                <td><span class="status-badge archived">Archived</span></td>
+                                <td class="actions">
+                                    <button class="action-btn view" title="View"><i class="fas fa-eye"></i></button>
+                                    <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                    <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ARC002</td>
+                                <td>Users</td>
+                                <td>Inactive Users Archive</td>
+                                <td>2024-03-14</td>
+                                <td>1.8 MB</td>
+                                <td><span class="status-badge archived">Archived</span></td>
+                                <td class="actions">
+                                    <button class="action-btn view" title="View"><i class="fas fa-eye"></i></button>
+                                    <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                    <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ARC003</td>
+                                <td>System Logs</td>
+                                <td>January 2024 System Logs</td>
+                                <td>2024-02-01</td>
+                                <td>4.2 MB</td>
+                                <td><span class="status-badge archived">Archived</span></td>
+                                <td class="actions">
+                                    <button class="action-btn view" title="View"><i class="fas fa-eye"></i></button>
+                                    <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                    <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-secondary">Previous</button>
+                    <span class="page-info">Page 1 of 5</span>
+                    <button class="btn btn-secondary">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Archive Details Modal -->
+    <div class="modal" id="archiveDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Archive Details</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="archive-details">
+                    <div class="detail-group">
+                        <label>Archive ID:</label>
+                        <span>#ARC001</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Type:</label>
+                        <span>Orders</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Description:</label>
+                        <span>Q1 2024 Orders Archive</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Date Archived:</label>
+                        <span>2024-03-15</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Size:</label>
+                        <span>2.5 MB</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Status:</label>
+                        <span class="status-badge archived">Archived</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Contents:</label>
+                        <ul class="archive-contents">
+                            <li>Orders: 150 records</li>
+                            <li>Invoices: 150 records</li>
+                            <li>Customer Data: 45 records</li>
+                        </ul>
+                    </div>
+                    <div class="detail-group">
+                        <label>Archive Location:</label>
+                        <span>/archives/orders/2024/q1/</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeArchiveDetails">Close</button>
+                <button class="btn btn-primary" id="restoreArchive">Restore Archive</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="super-admin.js"></script>
+</body>
+</html> 

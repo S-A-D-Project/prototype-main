@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs - OPSMS</title>
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Printing Services Logo" style="height:40px;">
+                </div>
+            </div>
+            <ul class="nav-links" role="menu">
+                <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li role="none"><a href="user-management.html" role="menuitem"><i class="fas fa-users"></i> User Management</a></li>
+                <li role="none"><a href="system-config.html" role="menuitem"><i class="fas fa-cog"></i> System Config</a></li>
+                <li role="none"><a href="audit-logs.html" class="active" role="menuitem" aria-current="page"><i class="fas fa-history"></i> Audit Logs</a></li>
+                <li role="none"><a href="archives.html" role="menuitem"><i class="fas fa-archive"></i> Archives</a></li>
+                <li role="none"><a href="backup-restore.html" role="menuitem"><i class="fas fa-database"></i> Backup & Restore</a></li>
+            </ul>
+            <div class="logout">
+                <a href="../login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <header>
+                <div class="header-content">
+                    <h1>Audit Logs</h1>
+                    <div class="user-info">
+                        <span class="admin-name">System Administrator</span>
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>System Activity Logs</h2>
+                    <div class="header-actions">
+                        <div class="date-range">
+                            <input type="date" id="startDate">
+                            <span>to</span>
+                            <input type="date" id="endDate">
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search logs...">
+                        </div>
+                        <button class="export-btn">
+                            <i class="fas fa-download"></i>
+                            Export Logs
+                        </button>
+                    </div>
+                </div>
+
+                <div class="log-filters">
+                    <select class="filter-select">
+                        <option value="all">All Activities</option>
+                        <option value="login">Login Attempts</option>
+                        <option value="user">User Management</option>
+                        <option value="system">System Changes</option>
+                        <option value="security">Security Events</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="all">All Users</option>
+                        <option value="admin">Administrators</option>
+                        <option value="sub-admin">Sub-Admins</option>
+                        <option value="customer">Customers</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="success">Success</option>
+                        <option value="warning">Warning</option>
+                        <option value="error">Error</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>User</th>
+                                <th>Activity</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>IP Address</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-03-15 14:30:22</td>
+                                <td>admin@opsms.com</td>
+                                <td>User Login</td>
+                                <td>Authentication</td>
+                                <td><span class="status-badge success">Success</span></td>
+                                <td>192.168.1.100</td>
+                                <td>
+                                    <button class="action-btn view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-03-15 14:25:15</td>
+                                <td>john.doe@example.com</td>
+                                <td>Password Change</td>
+                                <td>Security</td>
+                                <td><span class="status-badge success">Success</span></td>
+                                <td>192.168.1.101</td>
+                                <td>
+                                    <button class="action-btn view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2024-03-15 14:20:05</td>
+                                <td>system</td>
+                                <td>Backup Completed</td>
+                                <td>System</td>
+                                <td><span class="status-badge success">Success</span></td>
+                                <td>127.0.0.1</td>
+                                <td>
+                                    <button class="action-btn view" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="btn btn-secondary">Previous</button>
+                    <span class="page-info">Page 1 of 10</span>
+                    <button class="btn btn-secondary">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Log Details Modal -->
+    <div class="modal" id="logDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log Details</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="log-details">
+                    <div class="detail-group">
+                        <label>Timestamp:</label>
+                        <span>2024-03-15 14:30:22</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>User:</label>
+                        <span>admin@opsms.com</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Activity:</label>
+                        <span>User Login</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Category:</label>
+                        <span>Authentication</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Status:</label>
+                        <span class="status-badge success">Success</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>IP Address:</label>
+                        <span>192.168.1.100</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>User Agent:</label>
+                        <span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36</span>
+                    </div>
+                    <div class="detail-group">
+                        <label>Additional Info:</label>
+                        <pre>{
+    "browser": "Chrome",
+    "os": "Windows 10",
+    "device": "Desktop"
+}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeLogDetails">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="super-admin.js"></script>
+</body>
+</html> 

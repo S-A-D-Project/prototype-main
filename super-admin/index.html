@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Administrator Dashboard - OPSMS</title>
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-print fa-2x"></i>
+                </div>
+            </div>
+            <ul class="nav-links" role="menu">
+                <li role="none"><a href="index.html" class="active" role="menuitem" aria-current="page"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li role="none"><a href="user-management.html" role="menuitem"><i class="fas fa-users"></i> User Management</a></li>
+                <li role="none"><a href="system-config.html" role="menuitem"><i class="fas fa-cog"></i> System Config</a></li>
+                <li role="none"><a href="audit-logs.html" role="menuitem"><i class="fas fa-history"></i> Audit Logs</a></li>
+                <li role="none"><a href="archives.html" role="menuitem"><i class="fas fa-archive"></i> Archives</a></li>
+                <li role="none"><a href="backup-restore.html" role="menuitem"><i class="fas fa-database"></i> Backup & Restore</a></li>
+            </ul>
+            <div class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <header>
+                <div class="header-content">
+                    <h1>System Administrator Dashboard</h1>
+                    <div class="user-info">
+                        <span class="admin-name">System Administrator</span>
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area active" id="dashboard">
+                <div class="stats-container">
+                    <div class="stat-card" role="article">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Total Users</h3>
+                            <p>1,234</p>
+                            <span class="stat-label">Active: 1,100</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" role="article">
+                        <i class="fas fa-user-shield" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Sub-Admins</h3>
+                            <p>45</p>
+                            <span class="stat-label">Active: 42</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" role="article">
+                        <i class="fas fa-user-check" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Customers</h3>
+                            <p>1,189</p>
+                            <span class="stat-label">Active: 1,058</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" role="article">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>System Health</h3>
+                            <p>98%</p>
+                            <span class="stat-label">All Systems Operational</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add New User</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-cog"></i>
+                            <span>System Settings</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security Check</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Generate Report</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="system-status">
+                    <h2>System Status</h2>
+                    <div class="status-grid">
+                        <div class="status-card">
+                            <h3>Server Status</h3>
+                            <div class="status-indicator online"></div>
+                            <p>All systems operational</p>
+                        </div>
+                        <div class="status-card">
+                            <h3>Database</h3>
+                            <div class="status-indicator online"></div>
+                            <p>Connected and healthy</p>
+                        </div>
+                        <div class="status-card">
+                            <h3>Security</h3>
+                            <div class="status-indicator online"></div>
+                            <p>All security measures active</p>
+                        </div>
+                        <div class="status-card">
+                            <h3>Backup</h3>
+                            <div class="status-indicator online"></div>
+                            <p>Last backup: 2 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Content -->
+            <div class="content-area hidden" id="users">
+                <div class="section-header">
+                    <h2>User Management</h2>
+                    <div class="header-actions">
+                        <button class="add-btn">
+                            <i class="fas fa-user-plus"></i>
+                            Add New User
+                        </button>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search users...">
+                        </div>
+                    </div>
+                </div>
+                <div class="user-filters">
+                    <select class="filter-select">
+                        <option value="all">All Users</option>
+                        <option value="admin">Sub-Admins</option>
+                        <option value="customer">Customers</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- User data will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- System Configuration Content -->
+            <div class="content-area hidden" id="system-config">
+                <div class="section-header">
+                    <h2>System Configuration</h2>
+                </div>
+                <div class="config-sections">
+                    <div class="config-section">
+                        <h3>Print Options</h3>
+                        <form class="config-form">
+                            <div class="form-group">
+                                <label>Available Paper Sizes</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" checked> A4</label>
+                                    <label><input type="checkbox" checked> Letter</label>
+                                    <label><input type="checkbox" checked> Legal</label>
+                                    <label><input type="checkbox"> A3</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Print Quality Options</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" checked> Draft</label>
+                                    <label><input type="checkbox" checked> Standard</label>
+                                    <label><input type="checkbox" checked> High Quality</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </form>
+                    </div>
+                    <div class="config-section">
+                        <h3>Pricing Rules</h3>
+                        <form class="config-form">
+                            <div class="form-group">
+                                <label>Base Price (₱)</label>
+                                <input type="number" value="5.00" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label>Price per Page (₱)</label>
+                                <input type="number" value="2.00" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label>Color Print Multiplier</label>
+                                <input type="number" value="2.5" step="0.1">
+                            </div>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Content -->
+            <div class="content-area hidden" id="security">
+                <div class="section-header">
+                    <h2>Security Management</h2>
+                </div>
+                <div class="security-sections">
+                    <div class="security-section">
+                        <h3>Access Control</h3>
+                        <form class="security-form">
+                            <div class="form-group">
+                                <label>Session Timeout (minutes)</label>
+                                <input type="number" value="30">
+                            </div>
+                            <div class="form-group">
+                                <label>Max Login Attempts</label>
+                                <input type="number" value="5">
+                            </div>
+                            <div class="form-group">
+                                <label>Password Policy</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" checked> Require Special Characters</label>
+                                    <label><input type="checkbox" checked> Require Numbers</label>
+                                    <label><input type="checkbox" checked> Require Uppercase</label>
+                                    <label><input type="checkbox" checked> Minimum 8 Characters</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </form>
+                    </div>
+                    <div class="security-section">
+                        <h3>System Logs</h3>
+                        <div class="logs-container">
+                            <div class="log-filters">
+                                <select class="filter-select">
+                                    <option value="all">All Activities</option>
+                                    <option value="login">Login Attempts</option>
+                                    <option value="changes">System Changes</option>
+                                    <option value="errors">Errors</option>
+                                </select>
+                                <input type="date" class="date-filter">
+                            </div>
+                            <div class="logs-list">
+                                <!-- Logs will be dynamically loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="content-area hidden" id="settings">
+                <div class="section-header">
+                    <h2>System Settings</h2>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3>General Settings</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>System Name</label>
+                                <input type="text" value="OPSMS">
+                            </div>
+                            <div class="form-group">
+                                <label>Admin Email</label>
+                                <input type="email" value="admin@opsms.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Support Phone</label>
+                                <input type="tel" value="+1234567890">
+                            </div>
+                            <div class="form-group">
+                                <label>Time Zone</label>
+                                <select>
+                                    <option value="UTC+8">Asia/Manila (UTC+8)</option>
+                                    <option value="UTC+0">UTC</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </form>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Backup Settings</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Backup Frequency</label>
+                                <select>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Backup Time</label>
+                                <input type="time" value="02:00">
+                            </div>
+                            <div class="form-group">
+                                <label>Retention Period (days)</label>
+                                <input type="number" value="30">
+                            </div>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Content -->
+            <div class="content-area hidden" id="reports">
+                <div class="section-header">
+                    <h2>Reports & Analytics</h2>
+                    <div class="header-actions">
+                        <button class="generate-btn">
+                            <i class="fas fa-file-export"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+                <div class="reports-container">
+                    <div class="report-filters">
+                        <select class="filter-select" id="reportTypeSelect">
+                            <option value="users">User Statistics</option>
+                            <option value="system">System Performance</option>
+                            <option value="security">Security Reports</option>
+                            <option value="activity">Activity Logs</option>
+                        </select>
+                    </div>
+                    <div class="report-summary" id="reportSummary">
+                        <!-- Summary cards will be injected here -->
+                    </div>
+                    <div class="report-content" id="reportContent">
+                        <!-- Detailed report will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="super-admin.js"></script>
+</body>
+</html> 

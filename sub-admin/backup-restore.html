@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup & Restore - Print It Now</title>
+    <link rel="stylesheet" href="sub-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sub-admin-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="document.querySelector('.sidebar').classList.remove('sidebar-open'); this.style.display='none';"></div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Printing Services Logo" style="height:40px;">
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order-management.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Order Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-management.html">
+                            <i class="fas fa-box"></i>
+                            <span>Product Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tracking-management.html">
+                            <i class="fas fa-truck"></i>
+                            <span>Tracking Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="archives.html">
+                            <i class="fas fa-archive"></i>
+                            <span>Archives</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="backup-restore.html">
+                            <i class="fas fa-database"></i>
+                            <span>Backup & Restore</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <h1>Backup & Restore</h1>
+                    <p class="welcome-text">Manage system backups and restoration</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search backups...">
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn-icon notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="user-profile" id="userProfileDropdown">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <div class="profile-info">
+                                <span class="username">Admin User</span>
+                                <span class="role">Sub Admin</span>
+                            </div>
+                            <i class="fas fa-caret-down"></i>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <a href="../login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="createBackup">
+                            <i class="fas fa-plus"></i>
+                            <span>Create Backup</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Backup Status -->
+            <section class="backup-status">
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Last Backup</h3>
+                        <p>2 hours ago</p>
+                        <span class="status-label">Automatic</span>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Next Backup</h3>
+                        <p>In 22 hours</p>
+                        <span class="status-label">Scheduled</span>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Storage Used</h3>
+                        <p>45.2 GB</p>
+                        <span class="status-label">of 100 GB</span>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>Backup Health</h3>
+                        <p>Good</p>
+                        <span class="status-label">All systems operational</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Backup Schedule -->
+            <section class="backup-schedule">
+                <div class="section-header">
+                    <h2>Backup Schedule</h2>
+                    <button class="btn btn-outline" id="editSchedule">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit Schedule</span>
+                    </button>
+                </div>
+                <div class="schedule-grid">
+                    <div class="schedule-item">
+                        <h4>Daily Backup</h4>
+                        <p>Every day at 2:00 AM</p>
+                        <span class="schedule-status active">Active</span>
+                    </div>
+                    <div class="schedule-item">
+                        <h4>Weekly Backup</h4>
+                        <p>Every Sunday at 3:00 AM</p>
+                        <span class="schedule-status active">Active</span>
+                    </div>
+                    <div class="schedule-item">
+                        <h4>Monthly Backup</h4>
+                        <p>1st of every month at 4:00 AM</p>
+                        <span class="schedule-status active">Active</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Backup History -->
+            <section class="backup-history">
+                <div class="section-header">
+                    <h2>Backup History</h2>
+                    <div class="header-actions">
+                        <select class="filter-select" id="backupType">
+                            <option value="all">All Types</option>
+                            <option value="automatic">Automatic</option>
+                            <option value="manual">Manual</option>
+                        </select>
+                        <button class="btn btn-outline" id="exportHistory">
+                            <i class="fas fa-download"></i>
+                            <span>Export History</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Backup ID</th>
+                                <th>Date & Time</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="backupTableBody">
+                            <!-- Backup entries will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <button class="btn btn-outline" id="prevPage">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <span class="page-info">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+                    <button class="btn btn-outline" id="nextPage">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Backup Modal -->
+    <div class="modal" id="backupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Backup</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="backupForm">
+                    <div class="form-group">
+                        <label>Backup Type</label>
+                        <select name="backupType" required>
+                            <option value="full">Full Backup</option>
+                            <option value="incremental">Incremental Backup</option>
+                            <option value="differential">Differential Backup</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Backup Options</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="compress" checked>
+                                Compress Backup
+                            </label>
+                            <label>
+                                <input type="checkbox" name="encrypt" checked>
+                                Encrypt Backup
+                            </label>
+                            <label>
+                                <input type="checkbox" name="verify" checked>
+                                Verify After Backup
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Storage Location</label>
+                        <select name="storageLocation" required>
+                            <option value="local">Local Storage</option>
+                            <option value="cloud">Cloud Storage</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelBackup">Cancel</button>
+                <button class="btn btn-primary" id="confirmBackup">Create Backup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Schedule Modal -->
+    <div class="modal" id="scheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Backup Schedule</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="scheduleForm">
+                    <div class="form-group">
+                        <label>Daily Backup</label>
+                        <div class="time-input">
+                            <input type="time" name="dailyTime" value="02:00">
+                            <label class="toggle">
+                                <input type="checkbox" name="dailyEnabled" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Weekly Backup</label>
+                        <div class="time-input">
+                            <select name="weeklyDay">
+                                <option value="0">Sunday</option>
+                                <option value="1">Monday</option>
+                                <option value="2">Tuesday</option>
+                                <option value="3">Wednesday</option>
+                                <option value="4">Thursday</option>
+                                <option value="5">Friday</option>
+                                <option value="6">Saturday</option>
+                            </select>
+                            <input type="time" name="weeklyTime" value="03:00">
+                            <label class="toggle">
+                                <input type="checkbox" name="weeklyEnabled" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Backup</label>
+                        <div class="time-input">
+                            <input type="number" name="monthlyDay" min="1" max="31" value="1">
+                            <input type="time" name="monthlyTime" value="04:00">
+                            <label class="toggle">
+                                <input type="checkbox" name="monthlyEnabled" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelSchedule">Cancel</button>
+                <button class="btn btn-primary" id="saveSchedule">Save Schedule</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    /* Compact Backup & Restore Page Styles */
+
+    /* Reduce padding and margin for main content */
+    .main-content {
+        padding: 1rem !important;
+    }
+
+    /* Compact header */
+    .content-header, .section-header {
+        padding: 0.75rem 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    .content-header h1, .section-header h2 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .welcome-text {
+        font-size: 0.9rem !important;
+    }
+
+    /* Compact status cards */
+    .backup-status {
+        display: flex;
+        gap: 0.75rem !important;
+        margin-bottom: 1rem !important;
+        flex-wrap: wrap;
+    }
+    .status-card {
+        flex: 1 1 120px;
+        min-width: 120px;
+        padding: 0.75rem 0.5rem !important;
+        border-radius: 0.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    .status-icon {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    .status-info h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+    .status-info p, .status-label {
+        font-size: 0.85rem !important;
+    }
+
+    /* Compact schedule and history */
+    .backup-schedule, .backup-history {
+        margin-bottom: 1rem !important;
+    }
+    .schedule-grid {
+        display: flex;
+        gap: 0.5rem !important;
+        flex-wrap: wrap;
+    }
+    .schedule-item {
+        flex: 1 1 120px;
+        min-width: 120px;
+        padding: 0.5rem 0.5rem !important;
+        border-radius: 0.5rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Compact table */
+    .table-container {
+        margin-bottom: 0.5rem !important;
+    }
+    .data-table th, .data-table td {
+        padding: 0.4rem 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* Compact buttons */
+    .btn, .btn-outline, .btn-primary {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.92rem !important;
+        border-radius: 0.4rem !important;
+    }
+
+    /* Compact form elements */
+    .form-group input, .form-group select {
+        padding: 0.4rem 0.7rem !important;
+        font-size: 0.92rem !important;
+    }
+    .checkbox-group label {
+        font-size: 0.92rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+
+    /* Compact modal */
+    .modal-content {
+        padding: 1rem !important;
+        min-width: 220px !important;
+    }
+    .modal-header, .modal-footer {
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* Compact pagination */
+    .pagination {
+        gap: 0.5rem !important;
+        margin-top: 0.5rem !important;
+    }
+    .page-info {
+        font-size: 0.92rem !important;
+    }
+
+    @media (max-width: 600px) {
+        .backup-status, .schedule-grid {
+            flex-direction: column;
+            gap: 0.5rem !important;
+        }
+    }
+    </style>
+
+    <script src="sub-admin.js"></script>
+    <script src="backup-restore.js"></script>
+</body>
+</html> 

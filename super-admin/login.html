@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Login</title>
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-header img {
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            height: 60px;
+        }
+        .login-header p {
+            margin-bottom: 1.5rem;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+        .form-group .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            font-size: 1rem;
+            color: #334155;
+            font-weight: 500;
+        }
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1rem;
+            z-index: 2;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px 40px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            background: #f8fafc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            z-index: 1;
+        }
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px #2563eb22;
+            outline: none;
+        }
+        #twofa-group {
+            background: #f1f5f9;
+            border-radius: 0.75rem;
+            padding: 1rem 1rem 0.5rem 1rem;
+            margin-top: 0.5rem;
+            border: 1.5px dashed #2563eb44;
+            display: none;
+        }
+        .form-group input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .form-group label[for="notRobot"] {
+            font-size: 1rem;
+            color: #2563eb;
+            font-weight: 500;
+            display: inline;
+            margin-left: 0.25rem;
+        }
+        .login-btn {
+            background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.85rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+        }
+        .login-btn:hover {
+            background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+            box-shadow: 0 4px 16px rgba(37,99,235,0.13);
+        }
+        .error-message {
+            color: #ef4444;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.98rem;
+            display: none;
+            text-align: center;
+        }
+        .success-message {
+            color: #10b981;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 1.25rem 0.5rem;
+                max-width: 98vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Logo" style="height:80px;display:block;margin:0 auto 20px auto;">
+                <p>Enter your credentials to access the dashboard</p>
+            </div>
+            <form class="login-form" id="loginForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required aria-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required aria-required="true">
+                    </div>
+                </div>
+                <div class="forgot-password" style="text-align: right; margin-top: -0.5rem;">
+                    <a href="reset-password.html" style="color: #2563eb; text-decoration: none; font-size: 0.95rem;">Forgot Password?</a>
+                </div>
+                <div class="form-group" id="twofa-group">
+                    <label for="twofa">2FA Code</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                        <input type="text" id="twofa" placeholder="Enter 2FA code" maxlength="6" aria-label="2FA code">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:10px;flex-direction:row;align-items:center;gap:0.5rem;">
+                    <input type="checkbox" id="notRobot" required aria-required="true">
+                    <label for="notRobot">I'm not a robot</label>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage" style="display:none;color:#10b981;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:0.5rem;padding:0.5rem 1rem;margin-top:0.5rem;text-align:center;"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Add your login form handling logic here
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Handle login logic here
+    });
+    </script>
+</body>
+</html> 

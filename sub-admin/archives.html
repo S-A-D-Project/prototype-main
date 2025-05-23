@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives - Print It Now</title>
+    <link rel="stylesheet" href="sub-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sub-admin-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="document.querySelector('.sidebar').classList.remove('sidebar-open'); this.style.display='none';"></div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Printing Services Logo" style="height:40px;">
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order-management.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Order Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-management.html">
+                            <i class="fas fa-box"></i>
+                            <span>Product Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tracking-management.html">
+                            <i class="fas fa-truck"></i>
+                            <span>Tracking Management</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="archives.html">
+                            <i class="fas fa-archive"></i>
+                            <span>Archives</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="backup-restore.html">
+                            <i class="fas fa-database"></i>
+                            <span>Backup & Restore</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <h1>Archives</h1>
+                    <p class="welcome-text">Manage archived data and records</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search archives...">
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn-icon notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="user-profile" id="userProfileDropdown">
+                            <img src="https://via.placeholder.com/40" alt="Profile">
+                            <div class="profile-info">
+                                <span class="username">Admin User</span>
+                                <span class="role">Sub Admin</span>
+                            </div>
+                            <i class="fas fa-caret-down"></i>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <a href="../login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="archiveData">
+                            <i class="fas fa-archive"></i>
+                            <span>Archive Data</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Archive Categories -->
+            <section class="archive-categories">
+                <div class="category-card" data-category="orders">
+                    <div class="category-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>Orders</h3>
+                        <p>Archived orders and transactions</p>
+                        <span class="count">1,234 records</span>
+                    </div>
+                </div>
+                <div class="category-card" data-category="products">
+                    <div class="category-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>Products</h3>
+                        <p>Archived product catalog</p>
+                        <span class="count">567 records</span>
+                    </div>
+                </div>
+                <div class="category-card" data-category="logs">
+                    <div class="category-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="category-info">
+                        <h3>System Logs</h3>
+                        <p>Archived system logs</p>
+                        <span class="count">45,678 records</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Archive Content -->
+            <section class="archive-content">
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label>Archive Date</label>
+                        <input type="date" id="archiveDate">
+                    </div>
+                    <div class="filter-group">
+                        <label>Category</label>
+                        <select id="archiveCategory">
+                            <option value="all">All Categories</option>
+                            <option value="orders">Orders</option>
+                            <option value="products">Products</option>
+                            <option value="logs">System Logs</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="applyFilters">
+                        <i class="fas fa-filter"></i>
+                        <span>Apply Filters</span>
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Archive ID</th>
+                                <th>Category</th>
+                                <th>Date Archived</th>
+                                <th>Records</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="archivesTableBody">
+                            <!-- Archive entries will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <button class="btn btn-outline" id="prevPage">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <span class="page-info">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+                    <button class="btn btn-outline" id="nextPage">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Archive Data Modal -->
+    <div class="modal" id="archiveModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Archive Data</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="archiveForm">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category" required>
+                            <option value="orders">Orders</option>
+                            <option value="products">Products</option>
+                            <option value="logs">System Logs</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date Range</label>
+                        <div class="date-range">
+                            <input type="date" name="startDate" required>
+                            <span>to</span>
+                            <input type="date" name="endDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Archive Options</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="compress" checked>
+                                Compress Archive
+                            </label>
+                            <label>
+                                <input type="checkbox" name="encrypt" checked>
+                                Encrypt Archive
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelArchive">Cancel</button>
+                <button class="btn btn-primary" id="confirmArchive">Archive</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="sub-admin.js"></script>
+    <script src="archives.js"></script>
+</body>
+</html> 

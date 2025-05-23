@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup & Restore - OPSMS</title>
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="../images/Gemini_Generated_Image_wafkqlwafkqlwafk.PNG" alt="Printing Services Logo" style="height:40px;">
+                </div>
+            </div>
+            <ul class="nav-links" role="menu">
+                <li role="none"><a href="index.html" role="menuitem"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li role="none"><a href="user-management.html" role="menuitem"><i class="fas fa-users"></i> User Management</a></li>
+                <li role="none"><a href="system-config.html" role="menuitem"><i class="fas fa-cog"></i> System Config</a></li>
+                <li role="none"><a href="audit-logs.html" role="menuitem"><i class="fas fa-history"></i> Audit Logs</a></li>
+                <li role="none"><a href="archives.html" role="menuitem"><i class="fas fa-archive"></i> Archives</a></li>
+                <li role="none"><a href="backup-restore.html" class="active" role="menuitem" aria-current="page"><i class="fas fa-database"></i> Backup & Restore</a></li>
+            </ul>
+            <div class="logout">
+                <a href="../login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <header>
+                <div class="header-content">
+                    <h1>Backup & Restore</h1>
+                    <div class="user-info">
+                        <span class="admin-name">System Administrator</span>
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="backup-section">
+                    <h2>System Backup</h2>
+                    <div class="backup-options">
+                        <div class="backup-card">
+                            <h3>Quick Backup</h3>
+                            <p>Create a backup of essential system data</p>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Create Backup
+                            </button>
+                        </div>
+                        <div class="backup-card">
+                            <h3>Full Backup</h3>
+                            <p>Create a complete system backup including all data</p>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-database"></i>
+                                Create Full Backup
+                            </button>
+                        </div>
+                        <div class="backup-card">
+                            <h3>Scheduled Backup</h3>
+                            <p>Configure automatic backup schedule</p>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-clock"></i>
+                                Configure Schedule
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backup-list-section">
+                    <div class="section-header">
+                        <h2>Backup History</h2>
+                        <div class="header-actions">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search backups...">
+                            </div>
+                            <button class="export-btn">
+                                <i class="fas fa-download"></i>
+                                Export List
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="backup-filters">
+                        <select class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="quick">Quick Backup</option>
+                            <option value="full">Full Backup</option>
+                            <option value="scheduled">Scheduled Backup</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="success">Success</option>
+                            <option value="failed">Failed</option>
+                            <option value="in-progress">In Progress</option>
+                        </select>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Backup ID</th>
+                                    <th>Type</th>
+                                    <th>Date Created</th>
+                                    <th>Size</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#BKP001</td>
+                                    <td>Full Backup</td>
+                                    <td>2024-03-15 14:30</td>
+                                    <td>1.2 GB</td>
+                                    <td><span class="status-badge success">Success</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn download" title="Download"><i class="fas fa-download"></i></button>
+                                        <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                        <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BKP002</td>
+                                    <td>Quick Backup</td>
+                                    <td>2024-03-15 12:00</td>
+                                    <td>450 MB</td>
+                                    <td><span class="status-badge success">Success</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn download" title="Download"><i class="fas fa-download"></i></button>
+                                        <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                        <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#BKP003</td>
+                                    <td>Scheduled Backup</td>
+                                    <td>2024-03-14 23:00</td>
+                                    <td>1.1 GB</td>
+                                    <td><span class="status-badge success">Success</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn download" title="Download"><i class="fas fa-download"></i></button>
+                                        <button class="action-btn restore" title="Restore"><i class="fas fa-undo"></i></button>
+                                        <button class="action-btn delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="btn btn-secondary">Previous</button>
+                        <span class="page-info">Page 1 of 3</span>
+                        <button class="btn btn-secondary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Backup Schedule Modal -->
+    <div class="modal" id="backupScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Configure Backup Schedule</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="backupScheduleForm">
+                    <div class="form-group">
+                        <label>Backup Type</label>
+                        <select name="backupType" required>
+                            <option value="quick">Quick Backup</option>
+                            <option value="full">Full Backup</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequency</label>
+                        <select name="frequency" required>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" name="backupTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Retention Period (days)</label>
+                        <input type="number" name="retention" min="1" max="365" value="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Storage Location</label>
+                        <select name="storageLocation" required>
+                            <option value="local">Local Storage</option>
+                            <option value="cloud">Cloud Storage</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSchedule">Cancel</button>
+                <button class="btn btn-primary" id="saveSchedule">Save Schedule</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restore Confirmation Modal -->
+    <div class="modal" id="restoreConfirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Restore</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to restore the system from this backup? This action cannot be undone.</p>
+                <div class="backup-info">
+                    <p><strong>Backup ID:</strong> #BKP001</p>
+                    <p><strong>Date:</strong> 2024-03-15 14:30</p>
+                    <p><strong>Type:</strong> Full Backup</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelRestore">Cancel</button>
+                <button class="btn btn-danger" id="confirmRestore">Restore System</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="super-admin.js"></script>
+</body>
+</html> 
